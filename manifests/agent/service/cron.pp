@@ -3,7 +3,7 @@
 class puppet::agent::service::cron (
   Boolean                 $enabled = false,
   Optional[Integer[0,23]] $hour    = undef,
-  Optional[Integer[0,59]] $minute  = undef,
+  Variant[Integer[0,59], Array[Integer[0,59]]] $minute  = undef,
 ) {
   unless $puppet::runmode == 'unmanaged' or 'cron' in $puppet::unavailable_runmodes {
     if $enabled {

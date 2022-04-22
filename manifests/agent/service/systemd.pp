@@ -3,7 +3,7 @@
 class puppet::agent::service::systemd (
   Boolean                 $enabled = false,
   Optional[Integer[0,23]] $hour    = undef,
-  Optional[Integer[0,59]] $minute  = undef,
+  Variant[Integer[0,59], Array[Integer[0,59]]] $minute  = undef,
 ) {
   unless $puppet::runmode == 'unmanaged' or 'systemd.timer' in $puppet::unavailable_runmodes {
     # Use the same times as for cron

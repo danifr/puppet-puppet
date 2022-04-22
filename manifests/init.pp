@@ -463,7 +463,7 @@
 #
 # $server_puppetserver_experimental::       For Puppetserver 5, enable the /puppet/experimental route? Defaults to true
 #
-# $server_puppetserver_auth_template::      Template for generating /etc/puppetlabs/puppetserver/conf.d/auth.conf 
+# $server_puppetserver_auth_template::      Template for generating /etc/puppetlabs/puppetserver/conf.d/auth.conf
 #
 # $server_puppetserver_trusted_agents::     Certificate names of puppet agents that are allowed to fetch *all* catalogs
 #                                           Defaults to [] and all agents are only allowed to fetch their own catalogs.
@@ -586,7 +586,7 @@ class puppet (
   Boolean $usecacheonfailure = $puppet::params::usecacheonfailure,
   Enum['cron', 'service', 'systemd.timer', 'none', 'unmanaged'] $runmode = $puppet::params::runmode,
   Optional[Integer[0,23]] $run_hour = undef,
-  Optional[Integer[0,59]] $run_minute = undef,
+  Variant[Integer[0,59], Array[Integer[0,59]]] $run_minute = undef,
   Array[Enum['cron', 'service', 'systemd.timer', 'none']] $unavailable_runmodes = $puppet::params::unavailable_runmodes,
   Optional[String] $cron_cmd = $puppet::params::cron_cmd,
   Optional[String] $systemd_cmd = $puppet::params::systemd_cmd,
